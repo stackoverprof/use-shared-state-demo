@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import { useSharedState } from '@stackoverprof/use-shared-state';
+import RenderCounter from './components/RenderCounter';
 
 interface CartItem {
 	id: number;
@@ -11,14 +12,6 @@ interface CartItem {
 }
 
 const ComponentA = () => {
-	// Render counter
-	const renderCount = useRef(0);
-
-	useEffect(() => {
-		renderCount.current += 1;
-		console.log(`🔄 ComponentA rendered ${renderCount.current} times`);
-	});
-
 	// Shared cart state - using @ prefix for persistent storage
 	const [cartItems, setCartItems] = useSharedState<CartItem[]>('cart-items', []);
 	const [cartCount, setCartCount] = useSharedState<number>('cart-count', 0);
@@ -85,11 +78,9 @@ const ComponentA = () => {
 		return item ? item.quantity : 0;
 	};
 	return (
-		<div className="relative">
-			{/* Floating Render Counter */}
-			<div className="absolute -top-[4px] -right-[4px] bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold z-10 shadow-lg">
-				Renders: {renderCount.current}
-			</div>
+		<div className="bg-white p-6 rounded-lg shadow-md relative">
+			{/* Render Counter */}
+			<RenderCounter name="ComponentA" color="green" position="top-right" />
 
 			{/* Cart Status Header */}
 			<div className="bg-blue-50 border mb-6 border-blue-200 rounded-lg p-4">

@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import { useSharedState } from '@stackoverprof/use-shared-state';
+import RenderCounter from './components/RenderCounter';
 
 export interface UserSettings {
 	name: string;
@@ -10,14 +11,6 @@ export interface UserSettings {
 }
 
 const ComponentC = () => {
-	// Render counter
-	const renderCount = useRef(0);
-
-	useEffect(() => {
-		renderCount.current += 1;
-		console.log(`🔄 ComponentC rendered ${renderCount.current} times`);
-	});
-
 	// Using persistent storage (@) so user settings survive page refresh and sync across tabs
 	const [userSettings, setUserSettings] = useSharedState<UserSettings>('@user-settings', {
 		name: '',
@@ -55,11 +48,9 @@ const ComponentC = () => {
 	};
 
 	return (
-		<div className="relative">
-			{/* Floating Render Counter */}
-			<div className="absolute -top-[4px] -right-[4px] bg-purple-500 text-white text-xs px-2 py-1 rounded-full font-bold shadow-lg z-10">
-				Renders: {renderCount.current}
-			</div>
+		<div className="bg-white p-6 rounded-lg shadow-md relative">
+			{/* Render Counter */}
+			<RenderCounter name="ComponentC" color="purple" position="top-right" />
 
 			<div className="flex-sc mb-6">
 				<h2 className="text-2xl mr-6 font-bold text-gray-800">👤 User Settings</h2>

@@ -20,19 +20,14 @@ const TestPage = () => {
 			</div>
 			<div className="max-w-6xl mx-auto">
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-					<div className="bg-white p-6 rounded-lg shadow-md">
-						<ComponentA />
-					</div>
-					<div className="bg-white p-6 rounded-lg shadow-md">
-						<ComponentB />
-					</div>
+					<ComponentA />
+
+					<ComponentB />
 				</div>
 
 				{/* ComponentC - Full width below A and B */}
 				<div className="mt-8">
-					<div className="bg-white p-6 rounded-lg shadow-md">
-						<ComponentC />
-					</div>
+					<ComponentC />
 				</div>
 			</div>
 
