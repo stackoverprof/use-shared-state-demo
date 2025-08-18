@@ -12,8 +12,8 @@ interface CartItem {
 
 const ComponentA = () => {
 	// Shared cart state - using @ prefix for persistent storage
-	const [cartItems, setCartItems] = useSharedState<CartItem[]>('@cart-items', []);
-	const [cartCount, setCartCount] = useSharedState<number>('@cart-count', 0);
+	const [cartItems, setCartItems] = useSharedState<CartItem[]>('cart-items', []);
+	const [cartCount, setCartCount] = useSharedState<number>('cart-count', 0);
 
 	// Static product catalog
 	const products = [

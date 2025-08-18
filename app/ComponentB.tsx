@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useSharedState } from '@stackoverprof/use-shared-state';
+import { UserSettings } from './ComponentC';
 
 interface CartItem {
 	id: number;
@@ -12,8 +13,8 @@ interface CartItem {
 
 const ComponentB = () => {
 	// Shared cart state - using @ prefix for persistent storage
-	const [cartItems, setCartItems] = useSharedState<CartItem[]>('@cart-items', []);
-	const [cartCount, setCartCount] = useSharedState<number>('@cart-count', 0);
+	const [cartItems, setCartItems] = useSharedState<CartItem[]>('cart-items', []);
+	const [cartCount, setCartCount] = useSharedState<number>('cart-count', 0);
 
 	const updateQuantity = (itemId: number, newQuantity: number) => {
 		const currentCart = cartItems || [];
@@ -58,12 +59,18 @@ const ComponentB = () => {
 	const isEmpty = currentCart.length === 0;
 	const total = calculateTotal();
 
+	const [userSettings] = useSharedState<UserSettings>('@user-settings');
+
 	return (
 		<div className="space-y-6">
 			{/* Cart Header */}
 			<div className="bg-green-50 border border-green-200 rounded-lg p-4">
 				<div className="flex items-center justify-between">
-					<h2 className="text-lg font-semibold text-green-800">Shopping Cart</h2>
+					<h2 className="text-lg font-semibold text-green-800">
+						{userSettings?.name
+							? `${userSettings.name}'s Shopping Cart`
+							: 'Shopping Cart'}
+					</h2>
 					<div className="flex items-center space-x-4">
 						<div className="text-sm text-green-700">
 							Total: <span className="font-semibold">${total.toFixed(2)}</span>

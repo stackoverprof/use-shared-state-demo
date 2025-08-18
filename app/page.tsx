@@ -3,6 +3,7 @@
 import React from 'react';
 import ComponentA from './ComponentA';
 import ComponentB from './ComponentB';
+import ComponentC from './ComponentC';
 
 const TestPage = () => {
 	return (
@@ -24,6 +25,13 @@ const TestPage = () => {
 					</div>
 					<div className="bg-white p-6 rounded-lg shadow-md">
 						<ComponentB />
+					</div>
+				</div>
+
+				{/* ComponentC - Full width below A and B */}
+				<div className="mt-8">
+					<div className="bg-white p-6 rounded-lg shadow-md">
+						<ComponentC />
 					</div>
 				</div>
 			</div>
