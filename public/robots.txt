@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://salsabilabintang.com/sitemap.xml
+
+# Additional crawl delay for respectful crawling
+Crawl-delay: 1

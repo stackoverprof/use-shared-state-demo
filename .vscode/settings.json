@@ -1,0 +1,14 @@
+{
+    "deepscan.enable": true,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "prettier.tabWidth": 4,
+    "prettier.requireConfig": false,
+    "prettier.useTabs": true,
+    "prettier.configPath": "./.prettierrc",
+    "files.exclude": {
+        "**/.next": true,
+        "**/node_modules": true,
+    },
+    "typescript.tsdk": "upsell-demo-web/node_modules/typescript/lib",
+}

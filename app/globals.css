@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html {
+		scroll-behavior: auto;
+	}
+	body {
+		@apply bg-background text-theme-pink;
+	}
+}
+
+@layer utilities {
+	.flex-cc {
+		@apply flex items-center justify-center;
+	}
+	.flex-cs {
+		@apply flex items-start justify-center;
+	}
+	.flex-ce {
+		@apply flex items-end justify-center;
+	}
+
+	.flex-bc {
+		@apply flex items-center justify-between;
+	}
+	.flex-bs {
+		@apply flex items-start justify-between;
+	}
+	.flex-be {
+		@apply flex items-end justify-between;
+	}
+
+	.flex-sc {
+		@apply flex items-center justify-start;
+	}
+	.flex-ss {
+		@apply flex items-start justify-start;
+	}
+	.flex-se {
+		@apply flex items-end justify-start;
+	}
+
+	.flex-ec {
+		@apply flex items-center justify-end;
+	}
+	.flex-es {
+		@apply flex items-start justify-end;
+	}
+	.flex-ee {
+		@apply flex items-end justify-end;
+	}
+
+	.flex-vc {
+		@apply flex items-center justify-evenly;
+	}
+	.flex-vs {
+		@apply flex items-start justify-evenly;
+	}
+	.flex-ve {
+		@apply flex items-end justify-evenly;
+	}
+
+	.flex-ac {
+		@apply flex items-center justify-around;
+	}
+	.flex-as {
+		@apply flex items-start justify-around;
+	}
+	.flex-ae {
+		@apply flex items-end justify-around;
+	}
+
+	.col {
+		@apply flex-col;
+	}
+
+	.full {
+		@apply h-full w-full;
+	}
+
+	/* Hide scrollbar for Chrome, Safari and Opera */
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+	/* Hide scrollbar for IE, Edge and Firefox */
+	.no-scrollbar {
+		-ms-overflow-style: none; /* IE and Edge */
+		scrollbar-width: none; /* Firefox */
+	}
+
+	.animate {
+		opacity: 0;
+	}
+
+	/* Animation delay utilities */
+	.animation-delay-500 {
+		animation-delay: 0.5s;
+	}
+
+	.animation-delay-1000 {
+		animation-delay: 1s;
+	}
+
+	.animation-delay-1500 {
+		animation-delay: 1.5s;
+	}
+}
+
+@layer components {
+	/* Built in loading state of every button */
+	button[data-loading='true'] {
+		@apply flex-cc;
+	}
+
+	button[data-loading='true'] i.spinner {
+		@apply ml-2 inline-flex;
+	}
+
+	.container {
+		@apply mx-auto w-full max-w-[1200px];
+	}
+
+	i.spinner {
+		display: none;
+		width: 16px;
+		height: 16px;
+		border: 3px solid;
+		border-color: #fff #fff5 #fff #fff5;
+		border-radius: 50%;
+		animation: spin 1.2s linear infinite;
+	}
+
+	@keyframes spin {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+
+	.no-scrollbar {
+		-ms-overflow-style: none; /* IE and Edge */
+		scrollbar-width: none; /* Firefox */
+	}
+
+	/* Add these styles to make the scrollbar minimalist and thin */
+	.scrollbar-thin {
+		scrollbar-width: thin; /* Firefox */
+		scrollbar-color: #bfbfbf transparent; /* Firefox */
+	}
+
+	.scrollbar-thin::-webkit-scrollbar {
+		width: 6px; /* Width of the scrollbar */
+	}
+
+	.scrollbar-thin::-webkit-scrollbar-track {
+		background: transparent; /* Track color */
+	}
+
+	.scrollbar-thin::-webkit-scrollbar-thumb {
+		background-color: #bfbfbf; /* Thumb color */
+		border-radius: 4px; /* Rounded edges for a minimalist look */
+	}
+
+	.btn {
+		@apply flex-cc rounded-[5px] px-6 pb-[8px] pt-[12px] font-bold uppercase;
+	}
+
+	.btn-solid-red {
+		@apply bg-theme-red text-white hover:bg-theme-red-600 active:bg-theme-red-700 disabled:cursor-not-allowed disabled:bg-opacity-30 disabled:text-opacity-70 disabled:hover:bg-theme-red disabled:hover:bg-opacity-30;
+	}
+
+	.btn-solid-white {
+		@apply bg-white text-primary hover:bg-opacity-90 active:bg-opacity-80 disabled:cursor-not-allowed disabled:bg-opacity-30 disabled:text-opacity-30 disabled:hover:bg-white disabled:hover:bg-opacity-30;
+	}
+
+	.btn-outline-red {
+		@apply border border-theme-red bg-theme-red bg-opacity-0 px-[23.2px] pb-[7.464px] pt-[11.196px] text-theme-red hover:bg-opacity-10 active:bg-opacity-20 disabled:cursor-not-allowed disabled:border-opacity-5 disabled:bg-opacity-10 disabled:text-opacity-30;
+	}
+
+	.btn-outline-white {
+		@apply border border-white bg-black bg-opacity-0 px-[23.2px] pb-[7.464px] pt-[11.196px] text-white hover:bg-opacity-5 active:bg-opacity-10 disabled:cursor-not-allowed disabled:border-opacity-5 disabled:bg-opacity-10 disabled:text-opacity-30;
+	}
+
+	.btn-invisible-red {
+		@apply bg-theme-red bg-opacity-0 text-theme-red hover:bg-opacity-5 active:bg-opacity-10 disabled:cursor-not-allowed disabled:text-opacity-30 disabled:hover:bg-opacity-0;
+	}
+}
