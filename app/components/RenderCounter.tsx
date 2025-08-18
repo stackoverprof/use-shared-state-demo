@@ -42,7 +42,7 @@ const RenderCounter: React.FC<RenderCounterProps> = ({
 
 	return (
 		<div
-			className={`${positionClasses[position]} ${colorClasses[color]} text-white text-xs px-2 py-1 rounded-full font-bold shadow-lg z-50 ${className}`}
+			className={`${positionClasses[position]} ${colorClasses[color]} text-white px-2 py-1 rounded-full font-bold shadow-lg z-50 ${className}`}
 		>
 			{renderCount.current}
 		</div>
