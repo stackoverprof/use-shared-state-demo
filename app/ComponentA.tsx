@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useSharedState } from '@stackoverprof/use-shared-state';
 
 interface CartItem {
@@ -11,6 +11,14 @@ interface CartItem {
 }
 
 const ComponentA = () => {
+	// Render counter
+	const renderCount = useRef(0);
+
+	useEffect(() => {
+		renderCount.current += 1;
+		console.log(`🔄 ComponentA rendered ${renderCount.current} times`);
+	});
+
 	// Shared cart state - using @ prefix for persistent storage
 	const [cartItems, setCartItems] = useSharedState<CartItem[]>('cart-items', []);
 	const [cartCount, setCartCount] = useSharedState<number>('cart-count', 0);
@@ -77,9 +85,14 @@ const ComponentA = () => {
 		return item ? item.quantity : 0;
 	};
 	return (
-		<div className="space-y-6">
+		<div className="relative">
+			{/* Floating Render Counter */}
+			<div className="absolute -top-[4px] -right-[4px] bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold z-10 shadow-lg">
+				Renders: {renderCount.current}
+			</div>
+
 			{/* Cart Status Header */}
-			<div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+			<div className="bg-blue-50 border mb-6 border-blue-200 rounded-lg p-4">
 				<div className="flex items-center justify-between">
 					<h2 className="text-lg font-semibold text-blue-800">Product Catalog</h2>
 					<div className="flex items-center space-x-2">
@@ -92,7 +105,7 @@ const ComponentA = () => {
 			</div>
 
 			{/* Products Grid */}
-			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+			<div className="grid grid-cols-1 mb-6 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 				{products.map((product) => {
 					const quantity = getItemQuantity(product.id);
 					const isInCart = quantity > 0;
