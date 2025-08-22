@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useSharedState } from '@stackoverprof/use-shared-state';
+import useSharedState from '@stackoverprof/use-shared-state';
 import RenderCounter from './components/RenderCounter';
 
 interface CartItem {
