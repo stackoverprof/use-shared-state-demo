@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import useSharedState from '@stackoverprof/use-shared-state';
 import { UserSettings } from './ComponentC';
 import RenderCounter from './components/RenderCounter';
@@ -62,13 +62,6 @@ const ComponentB = () => {
 
 	const [userSettings] = useSharedState<UserSettings>('@user-settings');
 
-	// Client-only state to prevent hydration mismatch
-	const [isClientSide, setIsClientSide] = useState(false);
-
-	useEffect(() => {
-		setIsClientSide(true);
-	}, []);
-
 	return (
 		<div className="bg-white p-6 rounded-lg shadow-md relative">
 			{/* Render Counter */}
@@ -78,7 +71,7 @@ const ComponentB = () => {
 			<div className="bg-green-50 border mb-6 border-green-200 rounded-lg p-4">
 				<div className="flex items-center justify-between">
 					<h2 className="text-lg font-semibold text-green-800">
-						{isClientSide && userSettings?.name
+						{userSettings?.name
 							? `${userSettings.name}'s Shopping Cart`
 							: 'Shopping Cart'}
 					</h2>

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import useSharedState from '@stackoverprof/use-shared-state';
 import RenderCounter from './components/RenderCounter';
 
@@ -17,13 +17,6 @@ const ComponentC = () => {
 		phone: '',
 		email: '',
 	});
-
-	// Client-only state to prevent hydration mismatch
-	const [isClientSide, setIsClientSide] = useState(false);
-	
-	useEffect(() => {
-		setIsClientSide(true);
-	}, []);
 
 	const handleNameChange = (name: string) => {
 		setUserSettings((prev) => ({
@@ -89,7 +82,7 @@ const ComponentC = () => {
 						className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors"
 					/>
 					<p className="text-xs text-gray-500">
-						{isClientSide && userSettings?.name ? `✓ ${userSettings.name}` : 'Name not set'}
+						{userSettings?.name ? `✓ ${userSettings.name}` : 'Name not set'}
 					</p>
 				</div>
 
@@ -104,7 +97,7 @@ const ComponentC = () => {
 						className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors"
 					/>
 					<p className="text-xs text-gray-500">
-						{isClientSide && userSettings?.phone ? `✓ ${userSettings.phone}` : 'Phone not set'}
+						{userSettings?.phone ? `✓ ${userSettings.phone}` : 'Phone not set'}
 					</p>
 				</div>
 
@@ -119,7 +112,7 @@ const ComponentC = () => {
 						className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors"
 					/>
 					<p className="text-xs text-gray-500">
-						{isClientSide && userSettings?.email ? `✓ ${userSettings.email}` : 'Email not set'}
+						{userSettings?.email ? `✓ ${userSettings.email}` : 'Email not set'}
 					</p>
 				</div>
 			</div>
